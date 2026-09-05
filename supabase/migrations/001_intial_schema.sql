@@ -1,8 +1,12 @@
+-- ==========================================================================================================================================================================
+-- This schema contains the initial database schema for the application. 
+--It includes the necessary tables, functions, and indexes to manage bicycles, expenses, inventory items, inventory purchases, parts used on bicycles, work logs, and sales.
+-- ==========================================================================================================================================================================
+
 create extension if not exists pgcrypto;
 
--- =========================================================
+
 -- BICYCLES
--- =========================================================
 create table public.bicycles (
     id uuid primary key default gen_random_uuid(),
 
@@ -45,11 +49,8 @@ create table public.bicycles (
     updated_at timestamptz not null default now()
 );
 
-
--- =========================================================
 -- EXPENSES
 -- bike_id NULL means general workshop expense
--- =========================================================
 create table public.expenses (
     id uuid primary key default gen_random_uuid(),
 
@@ -75,10 +76,7 @@ create table public.expenses (
     created_at timestamptz not null default now()
 );
 
-
--- =========================================================
 -- INVENTORY ITEMS
--- =========================================================
 create table public.inventory_items (
     id uuid primary key default gen_random_uuid(),
 
@@ -97,9 +95,7 @@ create table public.inventory_items (
 );
 
 
--- =========================================================
 -- INVENTORY PURCHASES
--- =========================================================
 create table public.inventory_purchases (
     id uuid primary key default gen_random_uuid(),
 
@@ -129,9 +125,7 @@ create table public.inventory_purchases (
 );
 
 
--- =========================================================
 -- PARTS USED ON BICYCLES
--- =========================================================
 create table public.bike_parts_used (
     id uuid primary key default gen_random_uuid(),
 
@@ -161,10 +155,7 @@ create table public.bike_parts_used (
     created_at timestamptz not null default now()
 );
 
-
--- =========================================================
 -- LABOUR / WORK LOGS
--- =========================================================
 create table public.work_logs (
     id uuid primary key default gen_random_uuid(),
 
@@ -187,11 +178,8 @@ create table public.work_logs (
     created_at timestamptz not null default now()
 );
 
-
--- =========================================================
 -- SALES
 -- One sale per bicycle
--- =========================================================
 create table public.sales (
     id uuid primary key default gen_random_uuid(),
 
@@ -210,10 +198,7 @@ create table public.sales (
     created_at timestamptz not null default now()
 );
 
-
--- =========================================================
 -- UPDATED_AT FUNCTION
--- =========================================================
 create or replace function public.set_updated_at()
 returns trigger
 language plpgsql
@@ -224,10 +209,7 @@ begin
 end;
 $$;
 
-
--- =========================================================
 -- UPDATED_AT TRIGGERS
--- =========================================================
 create trigger bicycles_set_updated_at
 before update on public.bicycles
 for each row
@@ -239,10 +221,7 @@ before update on public.inventory_items
 for each row
 execute function public.set_updated_at();
 
-
--- =========================================================
 -- INDEXES
--- =========================================================
 create index idx_bicycles_status
     on public.bicycles(status);
 
