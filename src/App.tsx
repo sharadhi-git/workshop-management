@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 import {supabase} from './lib/supabase'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+import Bicycles from './pages/Bicycles'
+import AddBicycle from './pages/AddBicycle'
+
 
 function App() {
   const [session, setSession] = useState<Session | null>(null)
@@ -37,7 +41,17 @@ function App() {
     return <Login />
   }
 
-  return <Dashboard />
+  return (
+  <Routes>
+    <Route path="/dashboard" element={<Dashboard />} />
+    <Route path="/bicycles" element={<Bicycles />} />
+    <Route path="/bicycles/add" element={<AddBicycle />} />
+    <Route
+        path="*"
+        element={<Navigate to="/dashboard" replace />} />
+  </Routes>
+  
+)
 }
 
 export default App
