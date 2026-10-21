@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
+
 
 function AddBicycle() {
   const navigate = useNavigate()
@@ -51,114 +52,135 @@ function AddBicycle() {
   }
 
   return (
-    <div>
-      <h1>Add Bicycle</h1>
+    <div className="page">
+      <div className="page-header">
+        <h1 className="page-title">Add Bicycle</h1>
+        <p className="page-subtitle">
+          Enter the purchase details for a newly acquired bicycle.
+        </p>
+      </div>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Brand</label>
-          <br />
-          <input
-            value={brand}
-            onChange={(e) => setBrand(e.target.value)}
-          />
-        </div>
+      <div className="card">
+        <form onSubmit={handleSubmit} className="form-grid">
+          <div className="form-row">
+            <label htmlFor="brand">Brand</label>
+            <input
+              id="brand"
+              value={brand}
+              onChange={(e) => setBrand(e.target.value)}
+              placeholder="e.g. Giant"
+            />
+          </div>
 
-        <div>
-          <label>Model</label>
-          <br />
-          <input
-            value={model}
-            onChange={(e) => setModel(e.target.value)}
-          />
-        </div>
+          <div className="form-row">
+            <label htmlFor="model">Model</label>
+            <input
+              id="model"
+              value={model}
+              onChange={(e) => setModel(e.target.value)}
+              placeholder="e.g. Talon 3"
+            />
+          </div>
 
-        <div>
-          <label>Bike Type</label>
-          <br />
-          <input
-            value={bikeType}
-            onChange={(e) => setBikeType(e.target.value)}
-          />
-        </div>
+          <div className="form-row">
+            <label htmlFor="bikeType">Bike Type</label>
+            <input
+              id="bikeType"
+              value={bikeType}
+              onChange={(e) => setBikeType(e.target.value)}
+              placeholder="e.g. Mountain Bike"
+            />
+          </div>
 
-        <div>
-          <label>Colour</label>
-          <br />
-          <input
-            value={colour}
-            onChange={(e) => setColour(e.target.value)}
-          />
-        </div>
+          <div className="form-row">
+            <label htmlFor="colour">Colour</label>
+            <input
+              id="colour"
+              value={colour}
+              onChange={(e) => setColour(e.target.value)}
+              placeholder="e.g. Black"
+            />
+          </div>
 
-        <div>
-          <label>Frame Size</label>
-          <br />
-          <input
-            value={frameSize}
-            onChange={(e) => setFrameSize(e.target.value)}
-          />
-        </div>
+          <div className="form-row">
+            <label htmlFor="frameSize">Frame Size</label>
+            <input
+              id="frameSize"
+              value={frameSize}
+              onChange={(e) => setFrameSize(e.target.value)}
+              placeholder="e.g. Medium"
+            />
+          </div>
 
-        <div>
-          <label>Wheel Size</label>
-          <br />
-          <input
-            value={wheelSize}
-            onChange={(e) => setWheelSize(e.target.value)}
-          />
-        </div>
+          <div className="form-row">
+            <label htmlFor="wheelSize">Wheel Size</label>
+            <input
+              id="wheelSize"
+              value={wheelSize}
+              onChange={(e) => setWheelSize(e.target.value)}
+              placeholder="e.g. 29 inch"
+            />
+          </div>
 
-        <div>
-          <label>Purchase Price</label>
-          <br />
-          <input
-            type="number"
-            step="0.01"
-            min="0"
-            value={purchasePrice}
-            onChange={(e) => setPurchasePrice(e.target.value)}
-            required
-          />
-        </div>
+          <div className="form-row">
+            <label htmlFor="purchasePrice">Purchase Price</label>
+            <input
+              id="purchasePrice"
+              type="number"
+              step="0.01"
+              min="0"
+              value={purchasePrice}
+              onChange={(e) => setPurchasePrice(e.target.value)}
+              placeholder="e.g. 180"
+              required
+            />
+          </div>
 
-        <div>
-          <label>Purchase Source</label>
-          <br />
-          <input
-            value={purchaseSource}
-            onChange={(e) => setPurchaseSource(e.target.value)}
-          />
-        </div>
+          <div className="form-row">
+            <label htmlFor="purchaseSource">Purchase Source</label>
+            <input
+              id="purchaseSource"
+              value={purchaseSource}
+              onChange={(e) => setPurchaseSource(e.target.value)}
+              placeholder="e.g. Facebook Marketplace"
+            />
+          </div>
 
-        <div>
-          <label>Pickup Location</label>
-          <br />
-          <input
-            value={pickupLocation}
-            onChange={(e) => setPickupLocation(e.target.value)}
-          />
-        </div>
+          <div className="form-row">
+            <label htmlFor="pickupLocation">Pickup Location</label>
+            <input
+              id="pickupLocation"
+              value={pickupLocation}
+              onChange={(e) => setPickupLocation(e.target.value)}
+              placeholder="e.g. Berwick"
+            />
+          </div>
 
-        <div>
-          <label>Condition Notes</label>
-          <br />
-          <textarea
-            value={conditionNotes}
-            onChange={(e) => setConditionNotes(e.target.value)}
-          />
-        </div>
+          <div className="form-row">
+            <label htmlFor="conditionNotes">Condition Notes</label>
+            <textarea
+              id="conditionNotes"
+              value={conditionNotes}
+              onChange={(e) => setConditionNotes(e.target.value)}
+              placeholder="Optional notes about the bicycle condition"
+            />
+          </div>
 
-        <br />
+          <div className="form-actions">
+            <Link to="/bicycles" className="link-button">
+              Cancel
+            </Link>
 
-        <button type="submit" disabled={saving}>
-          {saving ? 'Saving...' : 'Add Bicycle'}
-        </button>
+            <button type="submit" disabled={saving}>
+              {saving ? 'Saving...' : 'Add Bicycle'}
+            </button>
+          </div>
 
-        {errorMessage && (
-          <p>Error: {errorMessage}</p>
-        )}
-      </form>
+          {errorMessage && (
+            <div className="alert-error">Error: {errorMessage}</div>
+          )}
+        </form>
+      </div>
     </div>
   )
 }

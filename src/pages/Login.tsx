@@ -1,6 +1,7 @@
 //login page
 import { useState } from 'react'
 import { supabase } from '../lib/supabase'
+import './Login.css' // Import the CSS file for styling
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -23,14 +24,14 @@ function Login() {
     }
   }
 
-  return (
-    <div>
+ return (
+  <div className="login-page">
+    <div className="login-card">
       <h1>Bicycle Workshop Management</h1>
 
       <form onSubmit={handleLogin}>
-        <div>
+        <div className="login-field">
           <label>Email</label>
-          <br />
           <input
             type="email"
             value={email}
@@ -39,11 +40,8 @@ function Login() {
           />
         </div>
 
-        <br />
-
-        <div>
+        <div className="login-field">
           <label>Password</label>
-          <br />
           <input
             type="password"
             value={password}
@@ -52,14 +50,15 @@ function Login() {
           />
         </div>
 
-        <br />
-
-        <button type="submit">Sign in</button>
+        <button type="submit" className="login-button">
+          Sign in
+        </button>
       </form>
 
-      <p>{message}</p>
+      {message && <p className="login-message">{message}</p>}
     </div>
-  )
+  </div>
+)
 }
 
 export default Login
