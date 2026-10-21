@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Bicycles from './pages/Bicycles'
 import AddBicycle from './pages/AddBicycle'
+import './App.css' // Import the CSS file for styling
 
 
 function App() {
