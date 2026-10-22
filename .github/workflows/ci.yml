@@ -1,4 +1,4 @@
-name: Bycycle Workshop Management CI
+name: Bicycle Workshop Management CI
 on:
   push:
     branches:
@@ -11,15 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '14'
+          node-version: '24'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
+        # Step 4: Run ESLint
+      - name: Run lint checks
+        run: npm run lint
 
       - name: Run tests
         run: npm test
