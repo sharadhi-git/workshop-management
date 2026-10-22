@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
-import {supabase} from './lib/supabase'
-import Login from './pages/Login'
-import Dashboard from './pages/Dashboard'
-import Bicycles from './pages/Bicycles'
-import AddBicycle from './pages/AddBicycle'
+import {supabase} from '../lib/supabase'
+import Login from '../features/Auth/pages/Login'
+import Dashboard from '../features/dashboard/pages/Dashboard'
+import Bicycles from '../features/bicycles/pages/Bicycles'
+import AddBicycle from '../features/bicycles/pages/AddBicycle'
 import './App.css' // Import the CSS file for styling
 
 
