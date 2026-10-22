@@ -7,6 +7,7 @@ import Login from '../features/Auth/pages/Login'
 import Dashboard from '../features/dashboard/pages/Dashboard'
 import Bicycles from '../features/bicycles/pages/Bicycles'
 import AddBicycle from '../features/bicycles/pages/AddBicycle'
+import BicycleDetail from '../features/bicycles/pages/BicycleDetail'
 import './App.css' // Import the CSS file for styling
 
 
@@ -47,9 +48,8 @@ function App() {
     <Route path="/dashboard" element={<Dashboard />} />
     <Route path="/bicycles" element={<Bicycles />} />
     <Route path="/bicycles/add" element={<AddBicycle />} />
-    <Route
-        path="*"
-        element={<Navigate to="/dashboard" replace />} />
+    <Route path="/bicycles/:bikeCode" element={<BicycleDetail />} />
+    <Route path="*" element={<Navigate to="/dashboard" replace />} />
   </Routes>
   
 )

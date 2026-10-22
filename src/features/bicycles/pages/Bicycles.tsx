@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { supabase } from '../../../lib/supabase'
 import './Bicycles.css'
 
@@ -29,6 +29,7 @@ function Bicycles() {
   const [search, setSearch] = useState('')
   const [view, setView] = useState<'ACTIVE' | 'ALL' | 'SOLD'>('ACTIVE')
   const [sortBy, setSortBy] = useState('newest')
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function loadBicycles() {
@@ -243,7 +244,9 @@ function Bicycles() {
 
               <tbody>
                 {filteredBicycles.map((bike) => (
-                  <tr key={bike.id}>
+                  <tr key={bike.id}
+                      className="clickable-bike-row"
+                      onClick={() => navigate(`/bicycles/${bike.bike_code}`)}>
                     <td className="bike-code">
                       {bike.bike_code}
                     </td>

@@ -241,3 +241,8 @@
   color: #86efac;
   font-weight: 600;
 }
+
+.clickable-bike-row,
+.bicycle-card {
+  cursor: pointer;
+}
