@@ -1,4 +1,4 @@
-name: CI Workflow
+name: Bycycle Workshop Management CI
 on:
   push:
     branches:
@@ -26,3 +26,23 @@ jobs:
 
       - name: Build project
         run: npm run build  
+
+# Step 6: Check development server
+      - name: Test Vite development server
+        shell: bash
+        run: |
+          npm run dev -- --host 127.0.0.1 --strictPort &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
+
+          for i in {1..30}; do
+            if curl --fail --silent \
+              http://127.0.0.1:5173/ > /dev/null; then
+              echo "Vite server is running"
+              exit 0
+            fi
+            sleep 1
+          done
+
+          echo "Vite server failed to start"
+          exit 1
