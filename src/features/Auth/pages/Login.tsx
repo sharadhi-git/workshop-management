@@ -1,7 +1,7 @@
 //login page
 import { useState } from 'react'
 import { supabase } from '../../../lib/supabase'
-import './Login.css' // Import the CSS file for styling
+import './login.css' // Import the CSS file for styling
 
 function Login() {
   const [email, setEmail] = useState('')
