@@ -13,7 +13,6 @@ function AddBicycle() {
   const [frameSize, setFrameSize] = useState('')
   const [wheelSize, setWheelSize] = useState('')
   const [purchasePrice, setPurchasePrice] = useState('')
-  const [purchaseSource, setPurchaseSource] = useState('')
   const [pickupLocation, setPickupLocation] = useState('')
   const [conditionNotes, setConditionNotes] = useState('')
 
@@ -36,7 +35,6 @@ function AddBicycle() {
         frame_size: frameSize || null,
         wheel_size: wheelSize || null,
         purchase_price: Number(purchasePrice),
-        purchase_source: purchaseSource || null,
         pickup_location: pickupLocation || null,
         condition_notes: conditionNotes || null,
       })
