@@ -15,7 +15,6 @@ type Bicycle = {
   wheel_size: string | null
   purchase_date: string | null
   purchase_price: number
-  purchase_source: string | null
   pickup_location: string | null
   condition_notes: string | null
   status: string
@@ -51,7 +50,6 @@ function BicycleDetail() {
           wheel_size,
           purchase_date,
           purchase_price,
-          purchase_source,
           pickup_location,
           condition_notes,
           status,
@@ -177,11 +175,6 @@ function BicycleDetail() {
           <div>
             <span className="detail-label">Purchase Price</span>
             <strong>{formatMoney(bike.purchase_price)}</strong>
-          </div>
-
-          <div>
-            <span className="detail-label">Source</span>
-            <strong>{bike.purchase_source ?? '—'}</strong>
           </div>
 
           <div>

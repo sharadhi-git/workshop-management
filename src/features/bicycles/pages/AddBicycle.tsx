@@ -84,42 +84,77 @@ function AddBicycle() {
 
           <div className="form-row">
             <label htmlFor="bikeType">Bike Type</label>
-            <input
+            <select
               id="bikeType"
               value={bikeType}
               onChange={(e) => setBikeType(e.target.value)}
-              placeholder="e.g. Mountain Bike"
-            />
+            >
+              <option value="">Select bike type</option>
+              <option value="Mountain Bike">Mountain Bike</option>
+              <option value="Road Bike">Road Bike</option>
+              <option value="Hybrid Bike">Hybrid Bike</option>
+              <option value="Electric Bike">Electric Bike</option>
+              <option value="BMX">BMX</option>
+              <option value="Kids Bike">Kids Bike</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
 
           <div className="form-row">
             <label htmlFor="colour">Colour</label>
-            <input
+            <select
               id="colour"
               value={colour}
               onChange={(e) => setColour(e.target.value)}
-              placeholder="e.g. Black"
-            />
+            >
+              <option value="">Select colour</option>
+              <option value="Black">Black</option>
+              <option value="White">White</option>
+              <option value="Red">Red</option>
+              <option value="Blue">Blue</option>
+              <option value="Green">Green</option>
+              <option value="Yellow">Orange</option>
+              <option value="Purple">Purple</option>
+              <option value="Grey">Grey</option>
+              <option value="Silver">Silver</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
 
           <div className="form-row">
             <label htmlFor="frameSize">Frame Size</label>
-            <input
+            <select
               id="frameSize"
               value={frameSize}
               onChange={(e) => setFrameSize(e.target.value)}
-              placeholder="e.g. Medium"
-            />
+            >
+              <option value="">Select frame size</option>
+              <option value="XS">XS</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="XXL">XXL</option>
+            </select>
           </div>
 
           <div className="form-row">
             <label htmlFor="wheelSize">Wheel Size</label>
-            <input
+            <select
               id="wheelSize"
               value={wheelSize}
               onChange={(e) => setWheelSize(e.target.value)}
-              placeholder="e.g. 29 inch"
-            />
+            >
+            <option value="">Select wheel size</option>
+            <option value="12 inch">12 inch</option>
+            <option value="16 inch">16 inch</option>
+            <option value="20 inch">20 inch</option>
+            <option value="24 inch">24 inch</option>
+            <option value="26 inch">26 inch</option>
+            <option value="27.5 inch">27.5 inch</option>
+            <option value="29 inch">29 inch</option>
+            <option value="700C">700C</option>
+            </select>
           </div>
 
           <div className="form-row">
@@ -133,16 +168,6 @@ function AddBicycle() {
               onChange={(e) => setPurchasePrice(e.target.value)}
               placeholder="e.g. 180"
               required
-            />
-          </div>
-
-          <div className="form-row">
-            <label htmlFor="purchaseSource">Purchase Source</label>
-            <input
-              id="purchaseSource"
-              value={purchaseSource}
-              onChange={(e) => setPurchaseSource(e.target.value)}
-              placeholder="e.g. Facebook Marketplace"
             />
           </div>
 
