@@ -23,7 +23,6 @@ create table public.bicycles (
     purchase_price numeric(12,2) not null default 0
         check (purchase_price >= 0),
 
-    purchase_source text,
     condition_notes text,
 
     status text not null default 'PURCHASED'
